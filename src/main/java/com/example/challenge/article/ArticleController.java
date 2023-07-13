@@ -31,7 +31,7 @@ public class ArticleController {
     public String articleList (Model model, @RequestParam(value = "kw", defaultValue = "") String kw, Principal principal) {
         List<Article> articleList = this.articleService.getArticlesByKeyword(kw);
         model.addAttribute("articleList", articleList);
-
+        model.addAttribute("searchKeyword", kw);
         return "article_list";
     }
     @PreAuthorize("isAuthenticated()")

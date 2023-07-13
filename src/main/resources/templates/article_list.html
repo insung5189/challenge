@@ -34,10 +34,22 @@
 
 
 
+
     </style>
 </head>
 <body layout:fragment="content">
 <a th:href="@{/article/create}">게시글 등록하기</a>
+
+<div class="information-box" th:if="${searchKeyword != null && searchKeyword != ''}">
+    <div class="title">
+        <h2>검색 결과</h2>
+    </div>
+    <div class="text">
+        "
+        <div style="display:inline-block;" th:text="${searchKeyword}"></div>
+        " 검색어가 포함된 모든 결과입니다.
+    </div>
+</div>
 <table>
     <thead>
     <tr>
