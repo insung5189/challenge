@@ -1,5 +1,6 @@
-package com.example.challenge.question;
+package com.example.challenge.article;
 
+import com.example.challenge.user.SiteUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,4 +23,7 @@ public class Article {
     private String content;
 
     private LocalDateTime createDate;
+
+    @ManyToOne
+    private SiteUser author; // 여러 제품에 적용될 수 있지만 제품 당 작성자는 무조건 하나임 => ManyToOne
 }

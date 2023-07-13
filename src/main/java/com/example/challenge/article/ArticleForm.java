@@ -1,4 +1,4 @@
-package com.example.challenge.question;
+package com.example.challenge.article;
 
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;

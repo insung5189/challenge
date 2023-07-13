@@ -347,8 +347,8 @@ Caused by: java.lang.NumberFormatException: For input string: "28-MariaDB"
 
 2023-07-07 09:39:55.532  WARN 11676 --- [restartedMain] org.hibernate.dialect.H2Dialect          : HHH000393: The 0.0.0 version of H2 implements temporary table creation such that it commits current transaction; multi-table, bulk hql/jpaql will not work properly
 2023-07-07 09:39:55.532  INFO 11676 --- [restartedMain] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2023-07-07 09:39:55.664 ERROR 11676 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: Collection 'com.example.challenge.question.Article.answerList' is 'mappedBy' a property named 'question' which does not exist in the target entity 'com.example.challenge.answer.Answer'
-2023-07-07 09:39:55.665  WARN 11676 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Collection 'com.example.challenge.question.Article.answerList' is 'mappedBy' a property named 'question' which does not exist in the target entity 'com.example.challenge.answer.Answer'
+2023-07-07 09:39:55.664 ERROR 11676 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: Collection 'com.example.challenge.article.Article.answerList' is 'mappedBy' a property named 'question' which does not exist in the target entity 'com.example.challenge.answer.Answer'
+2023-07-07 09:39:55.665  WARN 11676 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Collection 'com.example.challenge.article.Article.answerList' is 'mappedBy' a property named 'question' which does not exist in the target entity 'com.example.challenge.answer.Answer'
 2023-07-07 09:39:55.670  INFO 11676 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2023-07-07 09:39:55.677  INFO 11676 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
 2023-07-07 09:39:55.680  INFO 11676 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
@@ -357,7 +357,7 @@ Caused by: java.lang.NumberFormatException: For input string: "28-MariaDB"
 Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
 2023-07-07 09:39:55.707 ERROR 11676 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
 
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Collection 'com.example.challenge.question.Article.answerList' is 'mappedBy' a property named 'question' which does not exist in the target entity 'com.example.challenge.answer.Answer'
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Collection 'com.example.challenge.article.Article.answerList' is 'mappedBy' a property named 'question' which does not exist in the target entity 'com.example.challenge.answer.Answer'
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1770) ~[spring-beans-6.0.10.jar:6.0.10]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598) ~[spring-beans-6.0.10.jar:6.0.10]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520) ~[spring-beans-6.0.10.jar:6.0.10]
@@ -378,7 +378,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.0.8.jar:3.0.8]
-Caused by: org.hibernate.AnnotationException: Collection 'com.example.challenge.question.Article.answerList' is 'mappedBy' a property named 'question' which does not exist in the target entity 'com.example.challenge.answer.Answer'
+Caused by: org.hibernate.AnnotationException: Collection 'com.example.challenge.article.Article.answerList' is 'mappedBy' a property named 'question' which does not exist in the target entity 'com.example.challenge.answer.Answer'
 	at org.hibernate.cfg.annotations.CollectionBinder.bindStarToManySecondPass(CollectionBinder.java:1568) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
 	at org.hibernate.cfg.annotations.CollectionBinder$1.secondPass(CollectionBinder.java:1524) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
 	at org.hibernate.cfg.CollectionSecondPass.doSecondPass(CollectionSecondPass.java:47) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]

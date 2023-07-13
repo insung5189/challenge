@@ -1,6 +1,7 @@
-package com.example.challenge.question;
+package com.example.challenge.article;
 
 import com.example.challenge.DataNotFoundException;
+import com.example.challenge.user.SiteUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,13 @@ public class ArticleService {
     public List<Article> getList () {
         return this.articleRepository.findAll();
     }
+    public List<Article> getArticlesByKeyword(String kw) {
+        if (kw != null) {
+            return articleRepository.findAllByKeyword(kw);
+        } else {
+            return articleRepository.findAll();
+        }
+    }
 
     public Article getArticle (Integer id) {
         Optional<Article> articleOptional = this.articleRepository.findById(id);
@@ -27,12 +35,13 @@ public class ArticleService {
         }
     }
 
-    public void create (String subject, String content) {
+    public void create (String subject, String content, SiteUser siteUser) {
 
         Article article = new Article();
         article.setSubject(subject);
         article.setContent(content);
         article.setCreateDate(LocalDateTime.now());
+        article.setAuthor(siteUser);
         this.articleRepository.save(article);
     }
 

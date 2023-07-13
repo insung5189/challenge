@@ -1,0 +1,28 @@
+<nav class="navbar" th:fragment="navbarFragment" xmlns:sec="http://www.w3.org/1999/xhtml"
+     xmlns:th="http://www.w3.org/1999/xhtml">
+    <div>
+        <a class="navbar-main" href="/">Home</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item" sec:authorize="isAnonymous()">
+                    <a class="nav-link" th:href="@{/user/login}">로그인</a>
+                </li>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <a class="nav-link" th:href="@{/user/logout}">로그아웃</a>
+                </li>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <a sec:authorize="isAuthenticated()" th:text="${#authentication.principal.username + ' 님'}"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="sign-up-btn" th:href="@{|/user/signup|}">회원가입</a>
+                </li>
+                <li class="nav-item">
+                    <form class="search-form" method="get" th:action="@{/article/list}">
+                        <input name="kw" placeholder="검색어 입력" required type="text">
+                        <button type="submit">검색</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

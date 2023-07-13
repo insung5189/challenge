@@ -1,10 +1,11 @@
 <!doctype html>
-<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="ko" layout:decorate="~{layout}" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
     <title>게시글 목록</title>
     <style>
         body {
@@ -30,9 +31,12 @@
             text-decoration: none;
             color: #333;
         }
+
+
+
     </style>
 </head>
-<body>
+<body layout:fragment="content">
 <a th:href="@{/article/create}">게시글 등록하기</a>
 <table>
     <thead>
@@ -40,6 +44,7 @@
         <th>게시글 ID</th>
         <th>제목</th>
         <th>작성일시</th>
+        <th>글쓴이</th>
         <th>수정 / 삭제</th>
     </tr>
     </thead>
@@ -52,7 +57,11 @@
             <a th:href="@{|/article/detail/${article.id}|}" th:text="${article.subject}"></a>
         </td>
         <td>
-            <a th:href="@{|/article/detail/${article.id}|}" th:text="${#temporals.format(article.createDate, 'yyyy-MM-dd HH:mm')}"></a>
+            <a th:href="@{|/article/detail/${article.id}|}"
+               th:text="${#temporals.format(article.createDate, 'yyyy-MM-dd HH:mm')}"></a>
+        </td>
+        <td>
+            <span th:if="${article.author != null}" th:text="${article.author.username}"></span>
         </td>
         <td>
             <a th:href="@{|/article/modify/${article.id}|}">수정하기</a>
@@ -62,5 +71,6 @@
     </tr>
     </tbody>
 </table>
+<a th:href="@{/article/list}">모든 게시글 보기</a>
 </body>
 </html>

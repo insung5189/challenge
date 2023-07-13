@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
@@ -27,11 +27,13 @@
         }
     </style>
 </head>
-<body>
+<body layout:fragment="content">
 <h2 th:text="${article.subject}"></h2>
+<div th:if="${article.author != null}" th:text="${'작성자 : ' + article.author.username}"></div>
 <div th:text="${'게시글 id : ' + article.id}"></div>
 <div th:text="${article.content}"></div>
 <div th:text="${#temporals.format(article.createDate, 'yyyy-MM-dd HH:mm')}"></div>
+
 
 <a th:href="@{|/article/modify/${article.id}|}">수정하기</a>
 <span> / </span>
